@@ -1,26 +1,27 @@
 <template>
-  <div>
-    <span class="test">Hello</span>
-    <img :src="photo" alt="photo">
+  <div class="wrapper">
+    <BlockHeader />
+    <PageMain />
+    <ComponentFooter />
   </div>
 </template>
 
 <script>
-import photo from 'img/photo.jpg';
+import BlockHeader from 'components/BlockHeader';
+import PageMain from 'components/PageMain';
+import ComponentFooter from 'components/ComponentFooter';
 
 export default {
-  data() {
-    return {
-      photo
-    }
-  }
+  components: {
+    BlockHeader,
+    PageMain,
+    ComponentFooter,
+  },
 }
 </script>
 
-
 <style lang="sass">
-@use 'styles/variables'
-
-.test
-  color: variables.$red-color
+.wrapper
+  width: 1050px
+  margin: 0 auto
 </style>

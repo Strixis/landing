@@ -46,6 +46,13 @@ module.exports = (_, { mode }) => ({
         ],
       },
       {
+        test: /\.css/,
+        use: [
+          mode === 'production' ? MiniCssExtractplugin.loader : 'style-loader',
+          'css-loader'
+        ]
+      },
+      {
         test: /\.(jp(e)?g|png|gif)$/,
         type: 'asset/resource',
         generator: {
