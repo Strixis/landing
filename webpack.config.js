@@ -2,6 +2,8 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractplugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = (_, { mode }) => ({
   entry: path.resolve(__dirname, 'src', 'index.js'),
@@ -27,14 +29,30 @@ module.exports = (_, { mode }) => ({
     rules: [
       {
         test: /\.vue$/,
+        exclude: /node_modules/i,
         loader: 'vue-loader',
-        exclude: /node_modules/,
+      },
+      {
+        test: /\.js$/,
+        exclude: [
+          /node_modules/i,
+          /dist/i,
+        ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+            ],
+          },
+        },
       },
       {
         test: /\.s[ac]ss$/,
         use: [
           mode === 'production' ? MiniCssExtractplugin.loader : 'style-loader',
           'css-loader',
+          'postcss-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -49,8 +67,9 @@ module.exports = (_, { mode }) => ({
         test: /\.css/,
         use: [
           mode === 'production' ? MiniCssExtractplugin.loader : 'style-loader',
-          'css-loader'
-        ]
+          'css-loader',
+          'postcss-loader',
+        ],
       },
       {
         test: /\.(jp(e)?g|png|gif)$/,
@@ -72,14 +91,21 @@ module.exports = (_, { mode }) => ({
       },
     ],
   },
+  optimization: {
+    minimize: mode === 'production' ? true : false,
+    minimizer: [
+      new CssMinimizerPlugin(),
+      new TerserPlugin(),
+    ],
+  },
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
-      filename: 'index.html'
+      filename: 'index.html',
     }),
     new MiniCssExtractplugin({
-      filename: 'index.css'
+      filename: 'index.css',
     }),
   ],
 });
