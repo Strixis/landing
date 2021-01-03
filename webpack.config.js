@@ -7,13 +7,20 @@ module.exports = (_, { mode }) => ({
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: 'index.js',
+    assetModuleFilename: 'sources/[name][ext]',
   },
   resolve: {
     extensions: [
       '.js',
       '.vue',
+      '.sass',
     ],
+    alias: {
+      components: path.resolve(__dirname, 'src', 'components'),
+      styles: path.resolve(__dirname, 'src', 'assets', 'styles'),
+      img: path.resolve(__dirname, 'src', 'assets', 'img'),
+    },
   },
   module: {
     rules: [
@@ -36,6 +43,24 @@ module.exports = (_, { mode }) => ({
             },
           },
         ],
+      },
+      {
+        test: /\.(jp(e)?g|png|gif)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'img/[hash][ext]',
+        },
+      },
+      {
+        test: /^favicon\.(jp(e)?g|png|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: '../[name][ext]',
+        },
+      },
+      {
+        test: /\.(svg|woff(2)?|eot|ttf|otf)$/,
+        type: 'asset/inline',
       },
     ],
   },
