@@ -112,6 +112,8 @@ module.exports = (_, { mode }) => ({
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
+      title: 'Strixis Landing',
+      favicon: './src/favicon.png',
       template: path.resolve(__dirname, 'src', 'index.html'),
       filename: 'index.html',
     }),

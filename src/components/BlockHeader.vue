@@ -11,7 +11,7 @@
 <script>
 import ComponentNavigation from 'components/ComponentNavigation';
 
-import logo from 'img/Logo.svg';
+import logo from 'img/logo-mini.svg';
 
 export default {
   components: {
