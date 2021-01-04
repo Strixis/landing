@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="container">
     <BlockHeader />
     <PageMain />
     <ComponentFooter />
@@ -21,7 +21,5 @@ export default {
 </script>
 
 <style lang="sass">
-.wrapper
-  width: 1050px
-  margin: 0 auto
+@use 'styles'
 </style>

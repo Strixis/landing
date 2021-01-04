@@ -7,7 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = (_, { mode }) => ({
   entry: path.resolve(__dirname, 'src', 'index.js'),
-  devtool: mode === 'production' ? false : 'source-map',
+  devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
@@ -23,6 +23,7 @@ module.exports = (_, { mode }) => ({
       components: path.resolve(__dirname, 'src', 'components'),
       styles: path.resolve(__dirname, 'src', 'assets', 'styles'),
       img: path.resolve(__dirname, 'src', 'assets', 'img'),
+      fonts: path.resolve(__dirname, 'src', 'assets', 'fonts'),
     },
   },
   module: {
@@ -50,9 +51,15 @@ module.exports = (_, { mode }) => ({
       {
         test: /\.s[ac]ss$/,
         use: [
-          mode === 'production' ? MiniCssExtractplugin.loader : 'style-loader',
+          mode === 'production' ? {
+            loader: MiniCssExtractplugin.loader,
+            options: {
+              publicPath: '',
+            },
+          } : 'style-loader',
           'css-loader',
           'postcss-loader',
+          'resolve-url-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -64,11 +71,12 @@ module.exports = (_, { mode }) => ({
         ],
       },
       {
-        test: /\.css/,
+        test: /\.css$/,
         use: [
           mode === 'production' ? MiniCssExtractplugin.loader : 'style-loader',
           'css-loader',
           'postcss-loader',
+          'resolve-url-loader',
         ],
       },
       {
@@ -87,7 +95,10 @@ module.exports = (_, { mode }) => ({
       },
       {
         test: /\.(svg|woff(2)?|eot|ttf|otf)$/,
-        type: 'asset/inline',
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[hash][ext]',
+        }
       },
     ],
   },

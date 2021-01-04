@@ -1,0 +1,30 @@
+@use './m-colors' as *
+@use './m-fonts' as *
+
+.header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 7px 14px
+  box-sizing: border-box
+  background: $color-background-header
+  border-radius: 0 0 14px 14px
+
+.logonav-wrapper
+  display: flex
+  align-items: center
+
+.logo
+  margin: 0 40px 0 0
+
+.naviagtion_link
+  margin: 0 7px 0 0
+  text-decoration: none
+  @extend %font-header
+  &:last-child
+    margin: 0
+  &:hover
+     @extend %font-header-hover
+
+.welcome
+  @extend %font-header
