@@ -7,11 +7,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = (_, { mode }) => ({
   entry: path.resolve(__dirname, 'src', 'index.js'),
-  devtool: 'source-map',
+  devtool: mode === 'production' ? false : 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
-    assetModuleFilename: 'sources/[name][ext]',
   },
   resolve: {
     extensions: [
@@ -63,6 +62,7 @@ module.exports = (_, { mode }) => ({
           {
             loader: 'sass-loader',
             options: {
+              sourceMap: true,
               sassOptions: {
                 indentedSyntax: true,
               },
@@ -80,24 +80,24 @@ module.exports = (_, { mode }) => ({
         ],
       },
       {
-        test: /\.(jp(e)?g|png|gif)$/,
+        test: /\.(jp(e)?g|png|gif|svg)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[hash][ext]',
+          filename: 'sources/img/[hash][ext]',
         },
       },
       {
         test: /^favicon\.(jp(e)?g|png|gif)$/i,
         type: 'asset/resource',
         generator: {
-          filename: '../[name][ext]',
+          filename: '[name][ext]',
         },
       },
       {
-        test: /\.(svg|woff(2)?|eot|ttf|otf)$/,
+        test: /\.(woff(2)?|eot|ttf|otf)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[hash][ext]',
+          filename: 'sources/fonts/[hash][ext]',
         }
       },
     ],
