@@ -9,6 +9,7 @@
 .about-me
   display: flex
   align-items: flex-start
+  margin: 0 0 24px 0
   &_photo
     margin: 0 56px 0 0
   &_link
@@ -24,4 +25,36 @@
       margin: 0
     &:hover
       background: $color-background-active
-    
+
+.section
+  background: $color-background-lighter
+  border-radius: 7px
+  padding: 7px 14px
+  box-sizing: border-box
+  margin: 0 0 24px 0
+  &_description
+    margin: 0
+
+.heading
+  @extend %font-heading
+  margin: 0 0 7px 0
+
+.section-list
+  padding: 0
+  list-style-type: none
+  margin: 14px 0 0 0
+  &_item
+    padding: 14px
+    box-sizing: border-box
+    background: $color-background-main
+    border-bottom: 1px solid $color-border
+    &:last-child
+      border: none
+.projects::before
+  content: url(../img/marker-project.svg)
+  margin: 0 14px 0 0
+  float: left
+.lab::before
+  content: url(../img/marker-lab.svg)
+  margin: 0 14px 0 0
+  float: left
