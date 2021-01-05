@@ -5,6 +5,9 @@ const MiniCssExtractplugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
+const imgOutput = 'sources/img/[hash][ext]';
+const fontsOutput = 'sources/fonts/[hash][ext]';
+
 module.exports = (_, { mode }) => ({
   entry: path.resolve(__dirname, 'src', 'index.js'),
   devtool: mode === 'production' ? false : 'source-map',
@@ -76,14 +79,13 @@ module.exports = (_, { mode }) => ({
           mode === 'production' ? MiniCssExtractplugin.loader : 'style-loader',
           'css-loader',
           'postcss-loader',
-          'resolve-url-loader',
         ],
       },
       {
         test: /\.(jp(e)?g|png|gif|svg)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'sources/img/[hash][ext]',
+          filename: `${imgOutput}`,
         },
       },
       {
@@ -97,7 +99,7 @@ module.exports = (_, { mode }) => ({
         test: /\.(woff(2)?|eot|ttf|otf)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'sources/fonts/[hash][ext]',
+          filename: `${fontsOutput}`,
         }
       },
     ],
@@ -113,7 +115,7 @@ module.exports = (_, { mode }) => ({
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       title: 'Strixis Landing',
-      favicon: './src/favicon.png',
+      favicon: path.resolve(__dirname, 'src', 'favicon.png'),
       template: path.resolve(__dirname, 'src', 'index.html'),
       filename: 'index.html',
     }),

@@ -2,7 +2,7 @@
   <header class="header">
     <div class="logonav-wrapper">
       <a href="#" class="logo"><img :src="logo" alt="logo"></a>
-      <ComponentNavigation :links="links" />
+      <ComponentNavigation :navigation="navigation" />
     </div>
     <span class="welcome">Приветствую Вас на моей страничке!</span>
   </header>
@@ -20,20 +20,26 @@ export default {
   data() {
     return {
       logo,
-      links: [
-        {
+      navigation: {
+        links: [
+          {
           name: 'Главная',
           link: '#',
+          },
+          {
+            name: 'Проекты',
+            link: '#projects',
+          },
+          {
+            name: 'Лаборатория',
+            link: '#lab',
+          },
+        ],
+        class: {
+          nav: 'navigation',
+          link: 'navigation_link',
         },
-        {
-          name: 'Проекты',
-          link: '#projects',
-        },
-        {
-          name: 'Лаборатория',
-          link: '#lab',
-        },
-      ],
+      },
     }
   }
 }
