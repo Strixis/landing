@@ -1,7 +1,29 @@
 @use 'fonts'
+
+@use './m-colors' as *
+@use './m-fonts' as *
+
 @use './header'
+@use './main'
 @use './footer'
 
 .container
+  display: flex
+  flex-direction: column
   width: 1050px
+  min-height: 100vh
   margin: 0 auto
+  background: $color-background-main
+
+.main-text
+  @extend %font-main
+
+.main-link
+  @extend %font-link
+  &:hover
+    @extend %font-link-hover
+  &:active
+    @extend %font-link-active
+
+.__active
+  background: $color-background-active
