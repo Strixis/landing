@@ -1,14 +1,20 @@
 <template>
   <main class="main">
     <BlockAboutMe />
-    <ComponentSection :section="projects" />
-    <ComponentSection :section="lab" />
+    <SimpleComponentSectionPreview
+      :section="projects"
+      :classes="projectClasses"
+    />
+    <SimpleComponentSectionPreview
+      :section="lab"
+      :classes="labClasses"
+    />
   </main>
 </template>
 
 <script>
 import BlockAboutMe from 'components/BlockAboutMe';
-import ComponentSection from 'components/ComponentSection';
+import SimpleComponentSectionPreview from 'components/SimpleComponentSectionPreview';
 
 const main = 'section',
   title= 'heading',
@@ -23,7 +29,7 @@ const main = 'section',
 export default {
   components: {
     BlockAboutMe,
-    ComponentSection,
+    SimpleComponentSectionPreview,
   },
   data() {
     return {
@@ -50,16 +56,16 @@ export default {
 семантическим элементам html5, переходам и анимациям css3, показать навыки верстки.`
           },
         ],
-        classes: {
-          main,
-          title,
-          description,
-          sectionList: {
-            main: sectionList.main,
-            item: `${sectionList.item} projects`,
-            link: sectionList.link,
-            text: sectionList.text,
-          },
+      },
+      projectClasses: {
+        main,
+        title,
+        description,
+        sectionList: {
+          main: sectionList.main,
+          item: `${sectionList.item} projects`,
+          link: sectionList.link,
+          text: sectionList.text,
         },
       },
       lab: {
@@ -79,16 +85,16 @@ export default {
 полноценными шахматами.`
           },
         ],
-        classes: {
-          main,
-          title,
-          description,
-          sectionList: {
-            main: sectionList.main,
-            item: sectionList.item,
-            link: `${sectionList.link} lab`,
-            text: sectionList.text,
-          },
+      },
+      labClasses: {
+        main,
+        title,
+        description,
+        sectionList: {
+          main: sectionList.main,
+          item: sectionList.item,
+          link: `${sectionList.link} lab`,
+          text: sectionList.text,
         },
       },
     };

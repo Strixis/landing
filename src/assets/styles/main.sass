@@ -16,15 +16,17 @@
     padding: 7px 14px
     box-sizing: border-box
     cursor: pointer
-    background: none
+    background: transparent
     border: none
     border-radius: 4px
     margin: 0 7px 0 0
     @extend %font-heading-mini
+    transition: background .7s ease-out
     &:last-child
       margin: 0
     &:hover
       background: $color-background-active
+      
 
 .section
   background: $color-background-lighter

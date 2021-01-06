@@ -11,7 +11,9 @@
       >
         {{ section.name }}
       </button>
-      <component :is="activeSection" />
+      <transition name="a-hidenseek" mode="out-in">
+        <component :is="activeSection" />
+      </transition>
     </div>
   </section>
 </template>
