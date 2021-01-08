@@ -3,29 +3,45 @@
 
 .header
   display: flex
-  justify-content: space-between
   align-items: center
   flex-shrink: 0
   padding: 7px 14px
   box-sizing: border-box
   background: $color-background-header
   border-radius: 0 0 14px 14px
-
-.logonav-wrapper
-  display: flex
-  align-items: center
+  position: sticky
+  top: 0
+  z-index: 1
 
 .logo
   margin: 0 40px 0 0
 
-.navigation_link
-  margin: 0 7px 0 0
-  text-decoration: none
-  @extend %font-header
-  &:last-child
-    margin: 0
-  &:hover
-     @extend %font-header-hover
-
+.navigation
+  width: 100%
+  &_link
+    margin: 0 7px 0 0
+    text-decoration: none
+    @extend %font-header
+    &:last-child
+      margin: 0
+    &:hover
+      @extend %font-header-hover
+  &_button
+    display: none
+    width: 46px
+    height: 34px
+    padding: 0
+    box-sizing: border-box
+    border: 1px solid $color-border
+    border-radius: 7px
+    background: $color-button-nav
+    text-align: center
+    @extend %font-button-nav
+    margin: 0 0 0 auto
+    &:hover
+      background: $color-button-nav-hover
+    &:active
+      background: $color-button-nav-active
 .welcome
+  flex-shrink: 0
   @extend %font-header

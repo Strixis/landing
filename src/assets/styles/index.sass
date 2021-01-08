@@ -8,6 +8,9 @@
 @use './main'
 @use './footer'
 
+@use './adaptive768'
+@use './adaptive570'
+
 .clearfix::after
   content: ""
   clear: both
@@ -16,7 +19,7 @@
 .container
   display: flex
   flex-direction: column
-  width: 1050px
+  max-width: 1050px
   min-height: 100vh
   margin: 0 auto
   background: $color-background-main
@@ -35,4 +38,8 @@
   @extend %font-sub
 
 .__active
-  background: $color-background-active
+  background: $color-background-active !important
+  color: $font-heading-mini-color !important
+
+.__hidden
+  height: 0

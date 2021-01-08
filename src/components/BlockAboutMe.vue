@@ -1,7 +1,7 @@
 <template>
   <section class="about-me">
     <img :src="photo" alt="photo" class="about-me_photo">
-    <div>
+    <div class="about-me_content">
       <button
         v-for="(section, index) of sections"
         :key="index"

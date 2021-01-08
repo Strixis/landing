@@ -1,0 +1,34 @@
+@use './m-colors' as *
+@use './m-fonts' as *
+  
+@media screen and ( max-width: 570px )
+  .header
+    flex-wrap: wrap
+    justify-content: space-between
+
+  .logo
+    margin: 0 7px 0 0
+
+  .navigation
+    order: 3
+    overflow: hidden
+    height: 93px
+    transition: height .5s
+    &_link
+      display: block
+      padding: 7px
+      box-sizing: border-box
+      margin: 0
+    &_button
+      display: block
+
+
+  .about-me
+    &_photo
+      margin: 0 auto 7px auto
+    &_link
+      display: block
+      width: 100%
+
+  .main-text
+    text-align: center
