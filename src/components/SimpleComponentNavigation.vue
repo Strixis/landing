@@ -26,7 +26,7 @@ export default {
           (value.length > 0)
           && value.every((link) => (
             linksProperties.every((propertie) => link.hasOwnProperty(propertie))
-            && Object.keys(value).every((key) => (typeof key === 'string'))
+            && Object.values(link).every((linkValue) => (typeof linkValue === 'string'))
           ))
         ) result = true;
 
@@ -57,7 +57,7 @@ export default {
         ];
         if (
           classesProperties.every((propertie) => value.hasOwnProperty(propertie))
-          && Object.keys(value).every((key) => (typeof key === 'string'))
+          && Object.values(value).every((userValue) => (typeof userValue === 'string'))
         ) result = true;
 
         if (!result) console.warn(

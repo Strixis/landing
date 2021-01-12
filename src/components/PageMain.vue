@@ -16,6 +16,9 @@
 import BlockAboutMe from 'components/BlockAboutMe';
 import SimpleComponentSectionPreview from 'components/SimpleComponentSectionPreview';
 
+const projectFolder = './side/projects',
+  labFolder = './side/lab';
+
 const main = 'section',
   title= 'heading',
   description = 'section_description sub-text',
@@ -38,19 +41,19 @@ export default {
         description: 'В данном разделе представлены готовые проекты в которых я принимал участие.',
         sectionList: [
           {
-            link: '#',
+            link: `${projectFolder}/interrior/interrior.html`,
             name: 'Interior',
             description: ` - первый проект по курсу HTML/CSS. Цель: узнать основы html/css,
 научиться работать с дизайн-макетом.`,
           },
           {
-            link: '#',
+            link: `${projectFolder}/New_Automayion_Tools/New_Automayion_Tools.html`,
             name: 'New Automation Tool for Your',
             description: ` - второй проект по курсу HTML/CSS. Цель: закрепить знания по html/css,
 научиться работать с дизайн-макетом в figma.`
           },
           {
-            link: '#',
+            link: `${projectFolder}/waxom/waxom.html`,
             name: 'Waxom',
             description: ` - зачетный проект по курсу HTML5/CSS3. Цель: закрепить знания по
 семантическим элементам html5, переходам и анимациям css3, показать навыки верстки.`
@@ -73,12 +76,12 @@ export default {
         description: 'Добро пожаловать в мою скромную лабораторию!',
         sectionList: [
           {
-            link: '#',
+            link: 'https://github.com/Strixis',
             name: 'GitHub',
             description: ` - мой github.`,
           },
           {
-            link: '#',
+            link: `${labFolder}/chess/chess.html`,
             name: 'Шахматы!',
             description: ` - Задача: средствами JavaScript отобразить шахматную доску с фигурами.
 Цель: научиться основам взаимодействия с dom-деревом при помощи js. Возможно когда нибудь это будет

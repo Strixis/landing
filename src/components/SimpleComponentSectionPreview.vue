@@ -10,6 +10,7 @@
       >
         <a
           :href="item.link"
+          target="_blank"
           :class="classes.sectionList.link"
         >
           {{ item.name }}
@@ -38,7 +39,7 @@ export default {
         if (
           sectionProperties.every((propertie) => value.hasOwnProperty(propertie))
           && Object.keys(value).every((key) => (
-            key === 'sectionList' ? Array.isArray(value.sectionList) : (typeof key === 'string')
+            key === 'sectionList' ? Array.isArray(value[key]) : (typeof value[key] === 'string')
           ))
         ) {
           const sectionList = value.sectionList;
@@ -50,7 +51,11 @@ export default {
           if (
             sectionList.every((item) => (
               sectionListProperties.every((propertie) => item.hasOwnProperty(propertie))
-              && Object.keys(sectionListProperties).every((key) => (typeof key === 'string'))
+              && sectionList.every((sectionListItem) => (
+                Object.keys(sectionListItem).every(
+                  (key) => (typeof sectionListItem[key] === 'string')
+                )
+              ))
             ))
           ) result = true;
         };
@@ -88,7 +93,7 @@ export default {
         if (
           classesProperties.every((propertie) => value.hasOwnProperty(propertie))
           && Object.keys(value).every((key) => (
-            key === 'sectionList' ? (typeof key === 'object') : (typeof key === 'string')
+            key === 'sectionList' ? (typeof value[key] === 'object') : (typeof value[key] === 'string')
           ))
         ) {
           const sectionList = value.sectionList;
@@ -99,11 +104,12 @@ export default {
             'text',
           ];
           if (
-            sectionListProperties.every((propertie) => value.hasOwnProperty(propertie))
-            && Object.keys(sectionList).every((key) => (typeof key === 'string'))
+            sectionListProperties.every((propertie) => sectionList.hasOwnProperty(propertie))
+            && Object.keys(sectionList).every((key) => (typeof sectionList[key] === 'string'))
           ) result = true;
+        };
 
-          if (!result) console.warn(
+        if (!result) console.warn(
 `Prop "classes" should be
   {
     main: String,
@@ -116,9 +122,9 @@ export default {
       text: String.
     },
   }`
-          )
-        }
-        return true;
+          );
+
+        return result;
       }
     }
   },
