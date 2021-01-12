@@ -1,10 +1,12 @@
 <template>
   <main class="main">
     <BlockAboutMe />
+    <a href="#" name="projects"></a>
     <SimpleComponentSectionPreview
       :section="projects"
       :classes="projectClasses"
     />
+    <a href="#" name="lab"></a>
     <SimpleComponentSectionPreview
       :section="lab"
       :classes="labClasses"
