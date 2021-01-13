@@ -2,7 +2,7 @@
   <div>
     <p class="main-text">
       Меня зовут Константин. Родился 31.07.1995.
-      На данный момент мне 25 лет(если не забыл обновить возраст).
+      На данный момент мне {{ old }} лет(если функция отработала правильно).
       Я очень не люблю фотографироваться, поэтому можете наслаждаться аватаркой в виде филина.
       Периодически играюсь с photoshop и это один из коллажей, который был сделан мною.
     </p>
@@ -84,6 +84,25 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    old: () => {
+      const birthday = {
+        day: 31,
+        month: 7,
+        year: 1995,
+      };
+
+      const dateNow = new Date();
+
+      let old = dateNow.getFullYear() - birthday.year;
+
+      if (dateNow.getMonth() < birthday.month) {
+        if (dateNow.getDay() < birthday.day) old -= 1;
+      };
+      
+      return old;
+    },
   },
 }
 </script>
