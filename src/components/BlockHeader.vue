@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     handleResize() {
-      window.innerWidth > 570 ? this.showMenu = true : this.showMenu = false;
+      window.innerWidth > 569 ? this.showMenu = true : this.showMenu = false;
     },
   },
   created() {
