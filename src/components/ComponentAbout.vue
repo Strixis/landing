@@ -39,7 +39,13 @@
         v-for="(item, index) of knowledgeList"
         :key="index"
       >
-        <a :href="item.link" class="main-link">{{ item.name }}</a>
+        <a
+          :href="item.link"
+          target="_blank"
+          class="main-link"
+        >
+          {{ item.name }}
+        </a>
       </li>
     </ul>
   </div>
@@ -54,7 +60,9 @@ export default {
         'Базовые знания HTML5, CSS3',
         'Базовые знания JavaScript',
         'Знания JavaScript, стандарты ES5, ES6',
-        'Базовые знания vue.js',
+        'Базовые знания Vue',
+        'Базовые знания React',
+        'Базовые знания Webpack',
         'Умение валидной кроссбраузерной верстки',
         'Умение адаптивной верстки',
         'Базовые знания Git',
@@ -63,24 +71,24 @@ export default {
       ],
       knowledgeList: [
         {
-          name: 'курс «Основы программирования»',
-          link: 'https://geekbrains.ru/go/fuBfzq',
+          name: 'JavaScript. Уровень 1. ИК',
+          link: 'https://geekbrains.ru/certificates/945666',
         },
         {
-          name: 'курс «Ваш первый текст»',
-          link: 'https://geekbrains.ru/go/uT42ks',
+          name: 'JavaScript. Уровень 2. ИК',
+          link: 'https://geekbrains.ru/certificates/1018751',
         },
         {
-          name: 'курс «HTML/CSS. Интерактивный курс»',
-          link: 'https://geekbrains.ru/go/yoM6LG',
+          name: 'ReactJS. ИК',
+          link: 'https://geekbrains.ru/certificates/1079912',
         },
         {
-          name: 'курс «Веб-разработка. Быстрый старт»',
-          link: 'https://geekbrains.ru/go/z1OtbK',
+          name: 'HTML/CSS. ИК',
+          link: 'https://geekbrains.ru/certificates/935543',
         },
         {
-          name: '«Основы программирования. Видеокурс»',
-          link: 'https://geekbrains.ru/go/XuJYlb',
+          name: 'HTML5 и CSS3. ИК',
+          link: 'https://geekbrains.ru/certificates/976067',
         },
       ],
     };
