@@ -33,7 +33,10 @@
       «Информационная безопасность автоматизированных систем».
       Дата поступления: 2013 год.
     </p>
-    <p class="main-text">Кроме этого дополнительно обучаюсь на GeekBrains и имею следующие сертификаты:</p>
+    <p class="main-text">
+      Кроме этого дополнительно обучался на
+      <a href="https://geekbrains.ru/go/K6kf09" class="main-link">GeekBrains</a>
+      и имею следующие сертификаты:</p>
     <ul>
       <li
         v-for="(item, index) of knowledgeList"
